@@ -1,0 +1,9 @@
+{
+	"surrealql": {
+		"command": "surrealql",
+		"args": ["serve"],
+		"extensionToLanguage": {
+			".surql": "surrealql"
+		}
+	}
+}
