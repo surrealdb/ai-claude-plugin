@@ -11,7 +11,7 @@ Connects Claude to SurrealDB. Ships two MCP servers, five skills, and an auto-fo
 | `surrealdb-database` | `${SURREALDB_MCP_URL:-http://127.0.0.1:8000/mcp}` | Data plane: query, schema, records, permissions on the user's SurrealDB server |
 | `surrealdb-cloud` | `https://app.surrealdb.com/mcp` | Control plane: create/list/pause/resume SurrealDB Cloud instances (rolling out) |
 
-Both speak MCP over HTTP via the `/mcp` route built into SurrealDB. There is no separate `surrealmcp` binary.
+Both speak MCP over HTTP via the `/mcp` route built into SurrealDB.
 
 ### Skills (`plugins/surrealdb/skills/`)
 
