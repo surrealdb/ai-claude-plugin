@@ -9,7 +9,10 @@
 		},
 		"surrealdb-cloud": {
 			"type": "http",
-			"url": "https://app.surrealdb.com/mcp"
+			"url": "https://app.surrealdb.com/mcp",
+			"headers": {
+				"Authorization": "Bearer ${SURREALDB_CLOUD_TOKEN}"
+			}
 		}
 	}
 }

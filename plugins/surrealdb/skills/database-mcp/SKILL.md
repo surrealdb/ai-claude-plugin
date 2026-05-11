@@ -37,13 +37,13 @@ A SurrealDB `surreal-bearer-...` grant key is **not** an HTTP auth token. If the
 
 ## Configuring the Cloud MCP
 
-`surrealdb-cloud` uses OAuth. The first time Claude tries to call a cloud tool, run:
+`surrealdb-cloud` authenticates with a SurrealDB Cloud **Personal Access Token (PAT)**. Generate one in the SurrealDB Cloud dashboard (`app.surrealdb.com` → account settings → personal access tokens) and export it before launching Claude Code:
 
-```
-/mcp login surrealdb-cloud
+```sh
+export SURREALDB_CLOUD_TOKEN="<personal-access-token>"
 ```
 
-Claude Code will open a browser, complete the OAuth flow, and cache the token. No env vars or API keys go in `.mcp.json`.
+The token is sent as `Authorization: Bearer ${SURREALDB_CLOUD_TOKEN}`. Treat it like an API key: scope it tightly and rotate when leaked.
 
 ## Safety
 

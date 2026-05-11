@@ -38,10 +38,10 @@ export SURREALDB_MCP_TOKEN="<bearer-token>"
 
 ### Cloud MCP
 
-Uses OAuth. On first use:
+Authenticates with a SurrealDB Cloud Personal Access Token. Generate one in the Cloud dashboard at `app.surrealdb.com` (account settings) and export it:
 
-```
-/mcp login surrealdb-cloud
+```sh
+export SURREALDB_CLOUD_TOKEN="<personal-access-token>"
 ```
 
 ## Customizing
