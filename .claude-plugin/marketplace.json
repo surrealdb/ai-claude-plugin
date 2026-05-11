@@ -1,0 +1,13 @@
+{
+	"name": "surrealdb",
+	"owner": {
+		"name": "SurrealDB"
+	},
+	"plugins": [
+		{
+			"name": "surrealdb",
+			"source": "./plugins/surrealdb",
+			"description": "SurrealDB for Claude"
+		}
+	]
+}

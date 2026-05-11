@@ -6,7 +6,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DEFAULT_TARGET_DIR="$ROOT_DIR/plugins/surrealdb/skills"
 DEFAULT_REPO_URL="https://github.com/surrealdb/agent-skills.git"
 DEFAULT_REF="main"
-PROTECTED_SKILLS=("database-mcp")
+PROTECTED_SKILLS=("database-mcp" "surql-formatter")
 
 SOURCE_DIR=""
 TARGET_DIR="$DEFAULT_TARGET_DIR"
@@ -107,6 +107,8 @@ if [ ! -d "$SOURCE_DIR/skills" ]; then
 	exit 1
 fi
 
+COMMIT_SHA="$(git -C "$SOURCE_DIR" rev-parse HEAD 2>/dev/null || echo unknown)"
+
 mkdir -p "$TARGET_DIR"
 
 SYNC_COUNT=0
@@ -141,7 +143,7 @@ for skill_dir in "$SOURCE_DIR"/skills/*; do
 {
   "repo": "$REPO_URL",
   "ref": "$REF",
-  "source": "$SOURCE_DIR",
+  "commit": "$COMMIT_SHA",
   "skill": "$skill_name"
 }
 EOF

@@ -1,1 +1,15 @@
-{}
+{
+	"hooks": {
+		"PostToolUse": [
+			{
+				"matcher": "Edit|Write|MultiEdit",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "jq -r 'select(.tool_input.file_path|test(\"\\\\.surql$\")) | .tool_input.file_path' | xargs -r -I {} npx -y --package=@surrealdb/surql-fmt surqlfmt --write {} 2>/dev/null; exit 0"
+					}
+				]
+			}
+		]
+	}
+}
