@@ -27,11 +27,11 @@ The Database MCP URL defaults to `http://127.0.0.1:8000/mcp`. To point at a diff
 
 ```sh
 export SURREALDB_MCP_URL="https://my-host.example.com/mcp"
-export SURREALDB_MCP_TOKEN="<bearer-token-or-jwt>"  # optional
+export SURREALDB_MCP_TOKEN="<bearer-token-or-jwt>"
 ```
 
 - `SURREALDB_MCP_URL` — full URL including `/mcp` path.
-- `SURREALDB_MCP_TOKEN` — bearer token if the SurrealDB server requires HTTP auth. For local dev with auth disabled, leave it unset and remove the `Authorization` header block from `.mcp.json`.
+- `SURREALDB_MCP_TOKEN` — bearer token used to authenticate against the SurrealDB server's `/mcp` route.
 
 A SurrealDB `surreal-bearer-...` grant key is **not** an HTTP auth token. If the user only has signin credentials (root user/pass, scope `SIGNIN`/`SIGNUP`), they must exchange those for an access token first.
 
