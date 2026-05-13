@@ -6,7 +6,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DEFAULT_TARGET_DIR="$ROOT_DIR/plugins/surrealdb/skills"
 DEFAULT_REPO_URL="https://github.com/surrealdb/agent-skills.git"
 DEFAULT_REF="main"
-PROTECTED_SKILLS=("database-mcp" "surql-formatter")
+PROTECTED_SKILLS=("mcp" "surql-formatter")
 
 SOURCE_DIR=""
 TARGET_DIR="$DEFAULT_TARGET_DIR"

@@ -10,22 +10,25 @@ Both MCP servers are HTTP. Two options:
 
 Settings → Connectors → Add custom connector. Add one entry per server:
 
-| Name | URL | Header |
-|---|---|---|
-| `surrealdb-database` | `http://127.0.0.1:8000/mcp` (or your remote SurrealDB `/mcp` endpoint) | `Authorization: Bearer <SURREALDB_MCP_TOKEN>` |
-| `surrealdb-cloud` | `https://app.surrealdb.com/mcp` | `Authorization: Bearer <SURREALDB_CLOUD_TOKEN>` |
+| Name | URL | Header | Required |
+|---|---|---|---|
+| `surrealdb-database` | `http://127.0.0.1:8000/mcp` (or your remote SurrealDB `/mcp` endpoint) | `Authorization: Bearer <SURREALDB_MCP_TOKEN>` | Yes |
+| `surrealdb-cloud` | `https://app.surrealdb.com/mcp` | `Authorization: Bearer <SURREALDB_CLOUD_TOKEN>` | Optional — skip if you don't use SurrealDB Cloud |
+| `spectron` | `https://spectron.surrealdb.com/mcp` | `Authorization: Bearer <SPECTRON_MCP_TOKEN>` | Optional |
 
-Get a SurrealDB Cloud Personal Access Token from `app.surrealdb.com` (account settings).
+If you use SurrealDB Cloud, get a Personal Access Token from `app.surrealdb.com` (account settings). Otherwise skip the `surrealdb-cloud` entry.
 
 ### Option B — Manual config
 
-Merge [`claude_desktop_config.example.json`](claude_desktop_config.example.json) into your `claude_desktop_config.json` (macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`). Replace the `REPLACE_WITH_*` placeholders with real tokens. Restart Claude Desktop.
+Merge [`claude_desktop_config.example.json`](claude_desktop_config.example.json) into your `claude_desktop_config.json` (macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`). Replace the `REPLACE_WITH_*` placeholders with real values. Restart Claude Desktop.
+
+If you don't use SurrealDB Cloud or Spectron, delete those blocks from the config — both are optional. Only `surrealdb-database` is required.
 
 ## 2. Upload the skills
 
 Settings → Skills → Upload skill. Upload each of these folders from this repo:
 
-- [`../plugins/surrealdb/skills/database-mcp/`](../plugins/surrealdb/skills/database-mcp/) — when and how to use the two MCP servers
+- [`../plugins/surrealdb/skills/mcp/`](../plugins/surrealdb/skills/mcp/) — when and how to use the two MCP servers
 - [`../plugins/surrealdb/skills/surql-formatter/`](../plugins/surrealdb/skills/surql-formatter/) — formatting `.surql` files
 - [`../plugins/surrealdb/skills/surrealql/`](../plugins/surrealdb/skills/surrealql/) — writing idiomatic SurrealQL
 - [`../plugins/surrealdb/skills/surrealdb-vector/`](../plugins/surrealdb/skills/surrealdb-vector/) — vector search and embeddings

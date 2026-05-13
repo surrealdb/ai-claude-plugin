@@ -1,6 +1,6 @@
 # SurrealDB Claude Plugin
 
-Connects Claude to SurrealDB. Ships two MCP servers, five skills, and an auto-formatter for SurrealQL. Supports **Claude Code**, **Cowork**, and **Claude Desktop**.
+Connects Claude to SurrealDB. Ships three MCP servers, five skills, and an auto-formatter for SurrealQL. Supports **Claude Code**, **Cowork**, and **Claude Desktop**.
 
 ## Install
 
@@ -23,13 +23,12 @@ Claude Desktop has no plugin/marketplace format, so installation is manual: add 
 | Name | Endpoint | Purpose |
 |---|---|---|
 | `surrealdb-database` | `${SURREALDB_MCP_URL:-http://127.0.0.1:8000/mcp}` | Data plane: query, schema, records, permissions on the user's SurrealDB server |
-| `surrealdb-cloud` | `https://app.surrealdb.com/mcp` | Control plane: create/list/pause/resume SurrealDB Cloud instances (rolling out) |
-
-Both speak MCP over HTTP via the `/mcp` route built into SurrealDB.
+| `surrealdb-cloud` | `https://app.surrealdb.com/mcp` | Control plane: create/list/pause/resume SurrealDB Cloud instances. Optional — only used if you have a Cloud account |
+| `spectron` | `${SPECTRON_MCP_URL:-https://spectron.surrealdb.com/mcp}` | Spectron MCP |
 
 ### Skills (`plugins/surrealdb/skills/`)
 
-- `database-mcp`: when and how to use the two MCP servers above (local)
+- `mcp`: when and how to use the MCP servers above (local)
 - `surql-formatter`: running `@surrealdb/surql-fmt` and the auto-format hook (local)
 - `surrealql`: writing idiomatic SurrealQL (synced from `surrealdb/agent-skills`)
 - `surrealdb-vector`: vector search and embeddings (synced)
@@ -50,13 +49,26 @@ export SURREALDB_MCP_URL="https://my-host.example.com/mcp"
 export SURREALDB_MCP_TOKEN="<bearer-token>"
 ```
 
-### Cloud MCP
+### Cloud MCP (optional)
 
-Authenticates with a SurrealDB Cloud Personal Access Token. Generate one in the Cloud dashboard at `app.surrealdb.com` (account settings) and export it:
+Only needed if you use SurrealDB Cloud. Authenticates with a Personal Access Token — generate one in the Cloud dashboard at `app.surrealdb.com` (account settings) and export it:
 
 ```sh
 export SURREALDB_CLOUD_TOKEN="<personal-access-token>"
 ```
+
+If `SURREALDB_CLOUD_TOKEN` is unset, the connector loads but authenticated calls fail — leave it unset (or remove the block) if you don't have a Cloud account.
+
+### Spectron MCP
+
+Defaults to `https://spectron.surrealdb.com/mcp`. Override to point at a self-hosted Spectron, and supply a bearer token:
+
+```sh
+export SPECTRON_MCP_URL="https://your-spectron-host.example.com/mcp"   # optional override
+export SPECTRON_MCP_TOKEN="<bearer-token>"
+```
+
+If `SPECTRON_MCP_TOKEN` is unset, the connector still loads but authenticated calls will fail - set the token (or remove the `spectron` block) if you don't intend to use it.
 
 ## Customizing
 
@@ -68,4 +80,4 @@ export SURREALDB_CLOUD_TOKEN="<personal-access-token>"
 bash scripts/sync-agent-skills.sh
 ```
 
-The local skills (`database-mcp`, `surql-formatter`) are protected from being overwritten.
+The local skills (`mcp`, `surql-formatter`) are protected from being overwritten.

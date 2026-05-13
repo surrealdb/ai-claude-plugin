@@ -13,6 +13,13 @@
 			"headers": {
 				"Authorization": "Bearer REPLACE_WITH_SURREALDB_CLOUD_TOKEN"
 			}
+		},
+		"spectron": {
+			"type": "http",
+			"url": "https://spectron.surrealdb.com/mcp",
+			"headers": {
+				"Authorization": "Bearer REPLACE_WITH_SPECTRON_MCP_TOKEN"
+			}
 		}
 	}
 }
