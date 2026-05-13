@@ -1,0 +1,18 @@
+{
+	"mcpServers": {
+		"surrealdb-database": {
+			"type": "http",
+			"url": "http://127.0.0.1:8000/mcp",
+			"headers": {
+				"Authorization": "Bearer REPLACE_WITH_SURREALDB_MCP_TOKEN"
+			}
+		},
+		"surrealdb-cloud": {
+			"type": "http",
+			"url": "https://app.surrealdb.com/mcp",
+			"headers": {
+				"Authorization": "Bearer REPLACE_WITH_SURREALDB_CLOUD_TOKEN"
+			}
+		}
+	}
+}

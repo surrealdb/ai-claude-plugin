@@ -1,6 +1,20 @@
 # SurrealDB Claude Plugin
 
-Connects Claude to SurrealDB. Ships two MCP servers, five skills, and an auto-formatter for SurrealQL.
+Connects Claude to SurrealDB. Ships two MCP servers, five skills, and an auto-formatter for SurrealQL. Supports **Claude Code**, **Cowork**, and **Claude Desktop**.
+
+## Install
+
+### Claude Code
+
+Install via the plugin marketplace (or point Claude Code at this repo). Claude Code reads [`plugins/surrealdb/`](plugins/surrealdb/) directly — MCP servers, skills, and the auto-format hook all load automatically.
+
+### Cowork
+
+Same plugin layout as Claude Code — install from this repo in a Cowork session. The `.claude-plugin/` manifest works as-is.
+
+### Claude Desktop
+
+Claude Desktop has no plugin/marketplace format, so installation is manual: add the two MCP servers as Connectors and upload the skill folders via the Skills UI. Step-by-step in [`desktop/README.md`](desktop/README.md). The auto-format hook is unavailable on Desktop — the `surql-formatter` skill instructs the model to run the formatter itself after each `.surql` edit (model-driven, not deterministic).
 
 ## What you get
 
