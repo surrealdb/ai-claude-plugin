@@ -7,7 +7,12 @@
 		{
 			"name": "surrealdb",
 			"source": "./plugins/surrealdb",
-			"description": "SurrealDB for Claude"
+			"description": "SurrealDB for Claude — instance MCP, SurrealQL skills, and a .surql auto-formatter."
+		},
+		{
+			"name": "spectron",
+			"source": "./plugins/spectron",
+			"description": "Spectron for Claude — connect Claude to your Spectron instance MCP."
 		}
 	]
 }

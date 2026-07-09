@@ -1,0 +1,11 @@
+{
+	"mcpServers": {
+		"spectron": {
+			"type": "http",
+			"url": "${SPECTRON_MCP_URL}",
+			"headers": {
+				"Authorization": "Bearer ${SPECTRON_MCP_TOKEN}"
+			}
+		}
+	}
+}

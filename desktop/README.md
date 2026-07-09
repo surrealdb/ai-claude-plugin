@@ -1,38 +1,39 @@
-# SurrealDB for Claude Desktop
+# SurrealDB & Spectron for Claude Desktop
 
-Claude Desktop has no plugin/marketplace format, so installation is two manual steps: add the MCP servers, then upload the skills. The skill folders live in [`../plugins/surrealdb/skills/`](../plugins/surrealdb/skills/) — they are shared with the Claude Code / Cowork install path so there is only one source of truth.
+Claude Desktop has no plugin/marketplace format, so installation is two manual steps: add the MCP servers, then upload the skills. The skill folders live under [`../plugins/`](../plugins/) — they are shared with the Claude Code / Cowork install path so there is only one source of truth.
+
+Both servers are HTTP and both need **your own instance's `/mcp` URL** — there is no default. Install only the plugin(s) you use.
 
 ## 1. Add the MCP servers
 
-Both MCP servers are HTTP. Two options:
-
 ### Option A — Connectors UI (recommended)
 
-Settings → Connectors → Add custom connector. Add one entry per server:
+Settings → Connectors → Add custom connector. Add one entry per server you want:
 
-| Name | URL | Header | Required |
-|---|---|---|---|
-| `surrealdb-database` | `http://127.0.0.1:8000/mcp` (or your remote SurrealDB `/mcp` endpoint) | `Authorization: Bearer <SURREALDB_MCP_TOKEN>` | Yes |
-| `surrealdb-cloud` | `https://app.surrealdb.com/mcp` | `Authorization: Bearer <SURREALDB_CLOUD_TOKEN>` | Optional — skip if you don't use SurrealDB Cloud |
-| `spectron` | `https://spectron.surrealdb.com/mcp` | `Authorization: Bearer <SPECTRON_MCP_TOKEN>` | Optional |
-
-If you use SurrealDB Cloud, get a Personal Access Token from `app.surrealdb.com` (account settings). Otherwise skip the `surrealdb-cloud` entry.
+| Name | URL | Header |
+|---|---|---|
+| `surrealdb-database` | your SurrealDB `/mcp` endpoint (e.g. `http://127.0.0.1:8000/mcp` or `https://<your-instance>/mcp`) | `Authorization: Bearer <SURREALDB_MCP_TOKEN>` |
+| `spectron` | your Spectron `/mcp` endpoint (`https://<your-spectron-instance>/mcp`) | `Authorization: Bearer <SPECTRON_MCP_TOKEN>` |
 
 ### Option B — Manual config
 
-Merge [`claude_desktop_config.example.json`](claude_desktop_config.example.json) into your `claude_desktop_config.json` (macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`). Replace the `REPLACE_WITH_*` placeholders with real values. Restart Claude Desktop.
-
-If you don't use SurrealDB Cloud or Spectron, delete those blocks from the config — both are optional. Only `surrealdb-database` is required.
+Merge [`claude_desktop_config.example.json`](claude_desktop_config.example.json) into your `claude_desktop_config.json` (macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`). Replace every `REPLACE_WITH_*` placeholder — including the URLs — with real values, delete any server block you don't use, then restart Claude Desktop.
 
 ## 2. Upload the skills
 
-Settings → Skills → Upload skill. Upload each of these folders from this repo:
+Settings → Skills → Upload skill. Upload the folders for the plugin(s) you use:
 
-- [`../plugins/surrealdb/skills/mcp/`](../plugins/surrealdb/skills/mcp/) — when and how to use the two MCP servers
+**SurrealDB:**
+
+- [`../plugins/surrealdb/skills/mcp/`](../plugins/surrealdb/skills/mcp/) — when and how to use the Database MCP
 - [`../plugins/surrealdb/skills/surql-formatter/`](../plugins/surrealdb/skills/surql-formatter/) — formatting `.surql` files
 - [`../plugins/surrealdb/skills/surrealql/`](../plugins/surrealdb/skills/surrealql/) — writing idiomatic SurrealQL
 - [`../plugins/surrealdb/skills/surrealdb-vector/`](../plugins/surrealdb/skills/surrealdb-vector/) — vector search and embeddings
 - [`../plugins/surrealdb/skills/surrealdb-python/`](../plugins/surrealdb/skills/surrealdb-python/) — Python SDK
+
+**Spectron:**
+
+- [`../plugins/spectron/skills/mcp/`](../plugins/spectron/skills/mcp/) — when and how to use the Spectron MCP
 
 ## Auto-formatting `.surql` files
 

@@ -1,0 +1,8 @@
+{
+	"name": "spectron",
+	"description": "Spectron for Claude Code, Cowork, and Claude Desktop",
+	"version": "1.0.0",
+	"author": {
+		"name": "SurrealDB"
+	}
+}
