@@ -66,6 +66,18 @@ If `SURREALDB_MCP_URL` is unset, the server won't connect.
 
 - `mcp`: when and how to use the Spectron MCP (local)
 
+### Memory hooks (`plugins/spectron/hooks/`)
+
+Automatically recall memories into context and persist them back, using the same `/mcp` endpoint and token as the MCP server (`context_id` is inferred from the token):
+
+| Event | Spectron tool | What it does |
+|---|---|---|
+| `SessionStart` | `recall` | Injects general user/project memories at session start. |
+| `UserPromptSubmit` | `recall` | Injects memories relevant to each prompt. |
+| `Stop` | `remember` | Persists the latest exchange (`infer:"full"`). |
+
+All three run [`hooks/spectron-memory.sh`](plugins/spectron/hooks/spectron-memory.sh) (needs `curl` + `jq`) and **fail open** — if Spectron is unset, unreachable, or slow, they exit silently and never block you. Plugin hooks run in **Claude Code / Cowork** only (not Claude Desktop).
+
 ### Configuration
 
 The Spectron MCP has **no default URL** — set it to your instance's `/mcp` endpoint plus a bearer token:
@@ -75,7 +87,14 @@ export SPECTRON_MCP_URL="https://your-spectron-instance.example.com/mcp"
 export SPECTRON_MCP_TOKEN="<bearer-token>"
 ```
 
-If `SPECTRON_MCP_URL` is unset, the server won't connect.
+If `SPECTRON_MCP_URL` is unset, the server won't connect (and the memory hooks stay inert).
+
+Optional memory-hook knobs:
+
+```sh
+export SPECTRON_MEMORY_HOOKS=off      # disable the memory hooks (MCP server stays connected)
+export SPECTRON_HOOK_TIMEOUT=8        # per-call network timeout in seconds (default 8)
+```
 
 ## Customizing
 
