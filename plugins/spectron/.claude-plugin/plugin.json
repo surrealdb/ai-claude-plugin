@@ -1,7 +1,7 @@
 {
 	"name": "spectron",
-	"description": "Spectron for Claude Code, Cowork, and Claude Desktop",
-	"version": "1.0.0",
+	"description": "Spectron for Claude — zero-config MCP plus ambient recall/remember memory hooks",
+	"version": "2.0.0",
 	"author": {
 		"name": "SurrealDB"
 	}

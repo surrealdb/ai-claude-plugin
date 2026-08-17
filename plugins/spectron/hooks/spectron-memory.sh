@@ -9,8 +9,13 @@
 # The Spectron `/mcp` route is stateless JSON-RPC 2.0 over plain HTTP (no
 # initialize handshake, no session id, single JSON reply), so one `curl` +
 # `jq` round-trip per event is all it takes. `context_id` is omitted from every
-# call — Spectron infers it from the bearer token, so no extra config is needed
-# beyond the two env vars the MCP server already uses.
+# call — Spectron infers it from the bearer token, so the two env vars below are
+# the whole configuration.
+#
+# This deliberately does NOT ride the OAuth MCP transport: a hook is a separate
+# process with no access to the client's credential store, and UserPromptSubmit
+# blocks the user's prompt on a 12s timeout, where OAuth would turn one
+# round-trip into three on every prompt.
 #
 # Design rule: FAIL OPEN. Any missing prerequisite, network error, timeout, or
 # malformed response must exit 0 with no context injected. A memory layer that
@@ -19,8 +24,8 @@
 # Requires: curl, jq. Reads the hook payload as JSON on stdin.
 #
 # Env:
-#   SPECTRON_MCP_URL      required — the instance's /mcp endpoint (shared with the MCP server)
-#   SPECTRON_MCP_TOKEN    required — bearer token (shared with the MCP server)
+#   SPECTRON_MCP_URL      required — the memory endpoint (the instance's /mcp route)
+#   SPECTRON_MCP_TOKEN    required — bearer token for that endpoint
 #   SPECTRON_MEMORY_HOOKS optional — set to 0/off/false to disable all memory hooks
 #   SPECTRON_HOOK_TIMEOUT optional — per-call curl --max-time in seconds (default 8)
 

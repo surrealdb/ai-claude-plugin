@@ -7,12 +7,17 @@
 		{
 			"name": "surrealdb",
 			"source": "./plugins/surrealdb",
-			"description": "SurrealDB for Claude — instance MCP, SurrealQL skills, and a .surql auto-formatter."
+			"description": "SurrealDB for Claude — zero-config MCP (sign in with your Surreal ID), SurrealQL skills, and a .surql auto-formatter."
 		},
 		{
 			"name": "spectron",
 			"source": "./plugins/spectron",
-			"description": "Spectron for Claude — connect Claude to your Spectron instance MCP."
+			"description": "Spectron for Claude — zero-config MCP (sign in with your Surreal ID) plus recall/remember hooks that fire automatically each session and prompt."
+		},
+		{
+			"name": "surrealdb-local",
+			"source": "./plugins/surrealdb-local",
+			"description": "Connect Claude to a local, self-hosted, or air-gapped SurrealDB instance over its built-in /mcp route."
 		}
 	]
 }

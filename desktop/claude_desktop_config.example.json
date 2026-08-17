@@ -1,17 +1,14 @@
 {
 	"mcpServers": {
-		"surrealdb-database": {
+		"surrealdb": {
+			"type": "http",
+			"url": "https://mcp.surrealdb.com"
+		},
+		"surrealdb-local": {
 			"type": "http",
 			"url": "REPLACE_WITH_SURREALDB_MCP_URL",
 			"headers": {
 				"Authorization": "Bearer REPLACE_WITH_SURREALDB_MCP_TOKEN"
-			}
-		},
-		"spectron": {
-			"type": "http",
-			"url": "REPLACE_WITH_SPECTRON_MCP_URL",
-			"headers": {
-				"Authorization": "Bearer REPLACE_WITH_SPECTRON_MCP_TOKEN"
 			}
 		}
 	}
