@@ -1,11 +1,8 @@
 {
 	"mcpServers": {
-		"surrealdb-database": {
+		"surrealdb": {
 			"type": "http",
-			"url": "${SURREALDB_MCP_URL}",
-			"headers": {
-				"Authorization": "Bearer ${SURREALDB_MCP_TOKEN}"
-			}
+			"url": "https://mcp.surrealdb.com"
 		}
 	}
 }

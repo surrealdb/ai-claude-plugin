@@ -1,0 +1,8 @@
+{
+	"name": "surrealdb-local",
+	"description": "Connect Claude to a local or self-hosted SurrealDB instance over its built-in /mcp route",
+	"version": "1.0.0",
+	"author": {
+		"name": "SurrealDB"
+	}
+}

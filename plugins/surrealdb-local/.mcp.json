@@ -1,0 +1,11 @@
+{
+	"mcpServers": {
+		"surrealdb-local": {
+			"type": "http",
+			"url": "${SURREALDB_MCP_URL}",
+			"headers": {
+				"Authorization": "Bearer ${SURREALDB_MCP_TOKEN}"
+			}
+		}
+	}
+}
