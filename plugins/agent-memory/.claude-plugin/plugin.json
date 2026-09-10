@@ -1,0 +1,8 @@
+{
+	"name": "agent-memory",
+	"description": "SurrealDB Agent Memory for Claude — zero-config MCP plus ambient recall/remember memory hooks",
+	"version": "3.0.0",
+	"author": {
+		"name": "SurrealDB"
+	}
+}
