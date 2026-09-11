@@ -5,7 +5,7 @@
 				"hooks": [
 					{
 						"type": "command",
-						"command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/spectron-memory.sh\" recall",
+						"command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/agent-memory.sh\" recall",
 						"timeout": 12
 					}
 				]
@@ -16,7 +16,7 @@
 				"hooks": [
 					{
 						"type": "command",
-						"command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/spectron-memory.sh\" recall",
+						"command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/agent-memory.sh\" recall",
 						"timeout": 12
 					}
 				]
@@ -27,7 +27,7 @@
 				"hooks": [
 					{
 						"type": "command",
-						"command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/spectron-memory.sh\" remember",
+						"command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/agent-memory.sh\" remember",
 						"timeout": 15
 					}
 				]

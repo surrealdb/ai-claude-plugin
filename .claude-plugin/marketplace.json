@@ -10,9 +10,9 @@
 			"description": "SurrealDB for Claude — zero-config MCP (sign in with your Surreal ID), SurrealQL skills, and a .surql auto-formatter."
 		},
 		{
-			"name": "spectron",
-			"source": "./plugins/spectron",
-			"description": "Spectron for Claude — zero-config MCP (sign in with your Surreal ID) plus recall/remember hooks that fire automatically each session and prompt."
+			"name": "agent-memory",
+			"source": "./plugins/agent-memory",
+			"description": "SurrealDB Agent Memory for Claude — zero-config MCP (sign in with your Surreal ID) plus recall/remember hooks that fire automatically each session and prompt."
 		},
 		{
 			"name": "surrealdb-local",

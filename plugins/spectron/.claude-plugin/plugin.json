@@ -1,8 +1,0 @@
-{
-	"name": "spectron",
-	"description": "Spectron for Claude — zero-config MCP plus ambient recall/remember memory hooks",
-	"version": "2.0.0",
-	"author": {
-		"name": "SurrealDB"
-	}
-}

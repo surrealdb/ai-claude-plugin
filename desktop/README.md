@@ -1,10 +1,10 @@
-# SurrealDB & Spectron for Claude Desktop
+# SurrealDB & Agent Memory for Claude Desktop
 
 Claude Desktop has no plugin/marketplace format, so installation is two manual steps: add the MCP server, then upload the skills. The skill folders live under [`../plugins/`](../plugins/) — they are shared with the Claude Code / Cowork install path so there is only one source of truth.
 
 The managed server needs **no configuration** — no URL to find, no token to mint. Add it, sign in with your Surreal ID when prompted, done. Only add the local server if you develop against an instance you run yourself.
 
-> SurrealDB and Spectron share one endpoint, so on Desktop you add **one** connector for both — there's no reason to add `https://mcp.surrealdb.com` twice under two names. What Desktop can't do is the ambient memory: the `recall`/`remember` hooks need a hook system, so memory here is on-demand through the Spectron tools.
+> SurrealDB and Agent Memory share one endpoint, so on Desktop you add **one** connector for both — there's no reason to add `https://mcp.surrealdb.com` twice under two names. What Desktop can't do is the ambient memory: the `recall`/`remember` hooks need a hook system, so memory here is on-demand through the Agent Memory tools.
 
 ## 1. Add the MCP server
 
@@ -17,7 +17,7 @@ Settings → Connectors → Add custom connector:
 | `surrealdb` | `https://mcp.surrealdb.com` | OAuth — sign in with your Surreal ID when prompted |
 | `surrealdb-local` *(optional)* | your instance's `/mcp` endpoint (e.g. `http://127.0.0.1:8000/mcp`) | Header: `Authorization: Bearer <SURREALDB_MCP_TOKEN>` |
 
-The managed URL is the **bare root** — no `/mcp` or `/sse` path; those 404. It carries the SurrealDB *and* Spectron tools. Your own instance is the opposite: its route *is* `/mcp`.
+The managed URL is the **bare root** — no `/mcp` or `/sse` path; those 404. It carries the SurrealDB *and* Agent Memory tools. Your own instance is the opposite: its route *is* `/mcp`.
 
 ### Option B — Manual config
 
@@ -41,7 +41,7 @@ Settings → Skills → Upload skill:
 - [`../plugins/surrealdb/skills/surrealdb-vector/`](../plugins/surrealdb/skills/surrealdb-vector/) — vector search and embeddings
 - [`../plugins/surrealdb/skills/surrealdb-python/`](../plugins/surrealdb/skills/surrealdb-python/) — Python SDK
 
-If you added the local server, also upload [`../plugins/surrealdb-local/skills/surrealdb-local/`](../plugins/surrealdb-local/skills/surrealdb-local/). For Spectron memory, upload [`../plugins/spectron/skills/spectron/`](../plugins/spectron/skills/spectron/) — note its hook sections don't apply on Desktop.
+If you added the local server, also upload [`../plugins/surrealdb-local/skills/surrealdb-local/`](../plugins/surrealdb-local/skills/surrealdb-local/). For Agent Memory, upload [`../plugins/agent-memory/skills/agent-memory/`](../plugins/agent-memory/skills/agent-memory/) — note its hook sections don't apply on Desktop.
 
 ## Auto-formatting `.surql` files
 
